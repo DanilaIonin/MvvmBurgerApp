@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmBurgerApp.View.OrderPage"
+             Title="OrderPage">
+    <StackLayout Orientation="Vertical">
+        <StackLayout x:Name="friendStack" HorizontalOptions="Center">
+            <Picker x:Name="meetPicker" Title="Тип мяса:" WidthRequest="300" HorizontalOptions="Start"
+                    ItemsSource="{Binding typeOfMeet}"
+                    ItemDisplayBinding="{Binding Title}"
+                    SelectedItem="{Binding SelectedTypeOfMeet}"/>
+            
+            <StackLayout Orientation="Horizontal" Spacing="10" Margin="0, 10, 0, 0">
+                <Frame 
+                   CornerRadius="40" HeightRequest="50" WidthRequest="50" BorderColor="Orange">
+                    <Image Source="lettuce.png" Margin="-20" HeightRequest="50" WidthRequest="50"
+                   VerticalOptions="Center"/>
+                </Frame>
+                <VerticalStackLayout VerticalOptions="Center" Margin="10, 0, 0, 0">
+                    <Label Text="Салат"/>
+                    <Label Text="10"/>
+                </VerticalStackLayout>
+                <Button Text="+" WidthRequest="30" HeightRequest="30" Command="{Binding UpACountCommand}" CommandParameter="{Binding}" 
+                        Margin="70, 0, 0, 0" BackgroundColor="Orange"/>
+                <Label Text="{Binding SalatCount}" FontSize="Medium" WidthRequest="30" HeightRequest="40" HorizontalTextAlignment="Center"/>
+                <Button Text="-" WidthRequest="30" HeightRequest="30" Command="{Binding DownACountCommand}" CommandParameter="{Binding}"
+                        BackgroundColor="Orange"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Spacing="10" Margin="0, 10, 0, 0">
+                <Frame 
+                   CornerRadius="40" HeightRequest="50" WidthRequest="50" BorderColor="Orange" >
+                    <Image Source="tomato.png" Margin="-20" HeightRequest="50" WidthRequest="50"
+                   VerticalOptions="Center"/>
+                </Frame>
+                <VerticalStackLayout VerticalOptions="Center" Margin="10, 0, 0, 0">
+                    <Label Text="Томат"/>
+                    <Label Text="5"/>
+                </VerticalStackLayout>
+                <Button Text="+" WidthRequest="30" HeightRequest="30" Command="{Binding UpBCountCommand}" CommandParameter="{Binding}" 
+                        Margin="70, 0, 0, 0" BackgroundColor="Orange"/>
+                <Label Text="{Binding TomatCount}" FontSize="Medium" WidthRequest="30" HeightRequest="40" HorizontalTextAlignment="Center"/>
+                <Button Text="-" WidthRequest="30" HeightRequest="30" Command="{Binding DownBCountCommand}" CommandParameter="{Binding}"
+                        BackgroundColor="Orange"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" Spacing="10" Margin="0, 10, 0, 0">
+                <Frame 
+                   CornerRadius="40" HeightRequest="50" WidthRequest="50" BorderColor="Orange" >
+                    <Image Source="luk.jpg" Margin="-20" HeightRequest="50" WidthRequest="50"
+                   VerticalOptions="Center"/>
+                </Frame>
+                <VerticalStackLayout VerticalOptions="Center" Margin="10, 0, 0, 0">
+                    <Label Text="Лук"/>
+                    <Label Text="5"/>
+                </VerticalStackLayout>
+                <Button Text="+" WidthRequest="30" HeightRequest="30" Command="{Binding UpCCountCommand}" CommandParameter="{Binding}" 
+                        Margin="85, 0, 0, 0" BackgroundColor="Orange"/>
+                <Label Text="{Binding OnionCount}" FontSize="Medium" WidthRequest="30" HeightRequest="40" HorizontalTextAlignment="Center"/>
+                <Button Text="-" WidthRequest="30" HeightRequest="30" Command="{Binding DownCCountCommand}" CommandParameter="{Binding}"
+                        BackgroundColor="Orange"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Spacing="10" Margin="0, 10, 0, 0">
+                <Frame 
+                   CornerRadius="40" HeightRequest="50" WidthRequest="50" BorderColor="Orange" >
+                    <Image Source="ogurec.jpg" Margin="-20" HeightRequest="50" WidthRequest="50"
+                   VerticalOptions="Center"/>
+                </Frame>
+                <VerticalStackLayout VerticalOptions="Center" Margin="10, 0, 0, 0">
+                    <Label Text="Огурцы"/>
+                    <Label Text="15"/>
+                </VerticalStackLayout>
+                <Button Text="+" WidthRequest="30" HeightRequest="30" Command="{Binding UpDCountCommand}" CommandParameter="{Binding}" 
+                        Margin="59, 0, 0, 0" BackgroundColor="Orange"/>
+                <Label Text="{Binding CucumberCount}" FontSize="Medium" WidthRequest="30" HeightRequest="40" HorizontalTextAlignment="Center"/>
+                <Button Text="-" WidthRequest="30" HeightRequest="30" Command="{Binding DownDCountCommand}" CommandParameter="{Binding}"
+                        BackgroundColor="Orange"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Start" Margin="0, 20, 3, 0">
+                <Label Text="Количество:" VerticalOptions="Center" Margin="2, 0, 103, 0"/>
+                <Button Text="+" WidthRequest="30" HeightRequest="30" Command="{Binding UpCountCommand}" CommandParameter="{Binding}" BackgroundColor="Orange"/>
+                <Label Text="{Binding Count}" FontSize="Medium" WidthRequest="40" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                <Button Text="-" WidthRequest="30" HeightRequest="30" Command="{Binding DownCountCommand}" CommandParameter="{Binding}" BackgroundColor="Orange"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" >
+                <Label Text="Итого:" VerticalOptions="Center"/>
+                <Label Text="{Binding Total}" IsVisible="True" FontSize="18" Margin="10, 0, 0, 0"/>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="10">
+            <Button Text="Добавить в заказ" Command="{Binding ListViewModel.SaveBurgerCommand}" CommandParameter="{Binding}" BackgroundColor="Orange"/>
+            <Button Text="Назад" Command="{Binding Path=ListViewModel.BackCommand}" BackgroundColor="Orange"/>
+        </StackLayout>
+        
+    </StackLayout>
+</ContentPage>
